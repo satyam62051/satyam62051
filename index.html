@@ -3,37 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Compressor 🖼️</title>
+  <title>Hen AI 🎨</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Image Compressor 🖼️✨</h1>
-    <p>Upload an image and compress it to reduce file size!</p>
+    <h1>Hen AI 🎨✨</h1>
+    <p>Generate and edit images using AI-powered tools!</p>
 
-    <div class="upload-section">
-      <input type="file" id="fileInput" accept="image/*">
-      <label for="compressLevel">Compression Level:</label>
-      <input type="range" id="compressLevel" min="0" max="1" step="0.1" value="0.5">
-      <span id="compressValue">0.5</span>
-      <button id="compressBtn">Compress Image 🚀</button>
+    <div class="input-section">
+      <input type="text" id="promptInput" placeholder="Enter a prompt (e.g., 'A cat on the moon')">
+      <button id="generateBtn">Generate Image 🚀</button>
     </div>
 
-    <div class="results">
-      <h2>Results 📊</h2>
-      <table id="resultsTable">
-        <thead>
-          <tr>
-            <th>File Name</th>
-            <th>Original Size</th>
-            <th>Compressed Size</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Results will be added here dynamically -->
-        </tbody>
-      </table>
+    <div class="image-section">
+      <img id="generatedImage" src="" alt="Generated Image" style="display: none;">
+      <button id="downloadBtn" style="display: none;">Download Image ⬇️</button>
+    </div>
+
+    <div class="edit-tools">
+      <h2>Edit Tools 🛠️</h2>
+      <button id="cropBtn">Crop</button>
+      <button id="filterBtn">Apply Filter</button>
+      <button id="compressBtn">Compress</button>
     </div>
   </div>
 
