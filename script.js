@@ -1,70 +1,46 @@
 // DOM Elements
-const fileInput = document.getElementById('fileInput');
-const compressLevel = document.getElementById('compressLevel');
-const compressValue = document.getElementById('compressValue');
+const promptInput = document.getElementById('promptInput');
+const generateBtn = document.getElementById('generateBtn');
+const generatedImage = document.getElementById('generatedImage');
+const downloadBtn = document.getElementById('downloadBtn');
+const cropBtn = document.getElementById('cropBtn');
+const filterBtn = document.getElementById('filterBtn');
 const compressBtn = document.getElementById('compressBtn');
-const resultsTable = document.querySelector('#resultsTable tbody');
 
-// Update compression level value
-compressLevel.addEventListener('input', () => {
-  compressValue.textContent = compressLevel.value;
-});
+// Mock Image URL (Replace with AI API Integration)
+const mockImageUrl = 'https://via.placeholder.com/500';
 
-// Compress Image Function
-compressBtn.addEventListener('click', () => {
-  const file = fileInput.files[0];
-  if (!file) {
-    alert('Please upload an image first!');
+// Generate Image
+generateBtn.addEventListener('click', () => {
+  const prompt = promptInput.value.trim();
+  if (!prompt) {
+    alert('Please enter a prompt!');
     return;
   }
 
-  const compressionLevel = parseFloat(compressLevel.value);
-  const reader = new FileReader();
+  // Simulate AI image generation (Replace with actual API call)
+  generatedImage.src = mockImageUrl;
+  generatedImage.style.display = 'block';
+  downloadBtn.style.display = 'block';
+});
 
-  reader.onload = (event) => {
-    const img = new Image();
-    img.src = event.target.result;
+// Download Image
+downloadBtn.addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.href = generatedImage.src;
+  link.download = 'hen-ai-image.png';
+  link.click();
+});
 
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+// Edit Tools (Mock Functions)
+cropBtn.addEventListener('click', () => {
+  alert('Crop tool clicked!');
+});
 
-      // Set canvas dimensions
-      canvas.width = img.width;
-      canvas.height = img.height;
+filterBtn.addEventListener('click', () => {
+  alert('Filter tool clicked!');
+});
 
-      // Draw image on canvas
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-      // Compress image
-      canvas.toBlob(
-        (blob) => {
-          const compressedFile = new File([blob], file.name, {
-            type: 'image/jpeg',
-            lastModified: Date.now(),
-          });
-
-          // Display results in table
-          const originalSize = (file.size / 1024).toFixed(2) + ' KB';
-          const compressedSize = (blob.size / 1024).toFixed(2) + ' KB';
-          const status = '✅ Compressed';
-
-          const newRow = `
-            <tr>
-              <td>${file.name}</td>
-              <td>${originalSize}</td>
-              <td>${compressedSize}</td>
-              <td>${status}</td>
-            </tr>
-          `;
-
-          resultsTable.insertAdjacentHTML('beforeend', newRow);
-        },
-        'image/jpeg',
-        compressionLevel
-      );
-    };
-  };
-
-  reader.readAsDataURL(file);
+compressBtn.addEventListener('click', () => {
+  alert('Compress tool clicked!');
 });
