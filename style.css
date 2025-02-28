@@ -26,17 +26,16 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.upload-section {
+.input-section {
   margin-bottom: 2rem;
 }
 
-input[type="file"] {
-  margin-bottom: 1rem;
-}
-
-input[type="range"] {
-  width: 60%;
-  margin: 0 0.5rem;
+input[type="text"] {
+  width: 70%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 0.5rem;
 }
 
 button {
@@ -53,31 +52,20 @@ button:hover {
   background: #0056b3;
 }
 
-.results {
+.image-section {
   margin-top: 2rem;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
-th, td {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  text-align: center;
+.edit-tools {
+  margin-top: 2rem;
 }
 
-th {
-  background-color: #007bff;
-  color: #fff;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
+.edit-tools button {
+  margin: 0.5rem;
 }
